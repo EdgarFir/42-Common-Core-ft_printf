@@ -13,25 +13,21 @@ INCLUDES = -I .
 
 RM = rm -f
 
-LIBFT = libft.a
-
-LIBFT_PATH = libft/
-
 .c.o:
 	${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-	make -C ${LIBFT_PATH} bonus
+	make -C libft bonus
 	ar rcs ${NAME} ${OBJS}
 
 all: ${NAME}
 
 clean:
-	make -C ${LIBFT_PATH} clean
+	make -C libft clean
 	${RM} ${OBJS}
 
 fclean: clean
-	make -C ${LIBFT_PATH} fclean
+	make -C libft fclean
 	${RM} ${NAME}
 
 re:	fclean all
