@@ -1,6 +1,7 @@
 NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_format_s.c ft_format_c.c ft_format_p.c \
+	   ft_format_xX.c ft_format_u.c ft_hexlen.c ft_is_valid_conv.c ft_ulen.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -21,7 +22,7 @@ LIBFT_PATH = libft/
 
 $(NAME): ${OBJS}
 	make -C ${LIBFT_PATH} bonus
-	ar rcs ${NAME} ${OBJS} ${LIBFT_PATH}${LIBFT}
+	ar rcs ${NAME} ${OBJS}
 
 all: ${NAME}
 
