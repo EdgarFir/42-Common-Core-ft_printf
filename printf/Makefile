@@ -18,7 +18,7 @@ RM = rm -f
 
 $(NAME): ${OBJS}
 	make -C libft bonus
-	ar rcs ${NAME} ${OBJS}
+	ar rcs ${NAME} ${OBJS} libft/libft.a
 
 all: ${NAME}
 

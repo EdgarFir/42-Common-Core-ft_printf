@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexlen.c                                        :+:      :+:    :+:   */
+/*   ft_is_valid_conv.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:41:00 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:59:45 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 14:23:57 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/09 01:27:47 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
 
-size_t	ft_hexlen(long long hex)
+int	ft_is_valid_conv(const char *str)
 {
-	if (!hex)
+	char *conv;
+
+	conv = "cspdiuxX%";
+	if (!str[0] || !str[1])
 		return (0);
-	return 1 + (ft_hexlen(hex / 16));
+	if (str[0] == '%' && ft_strchr(conv, str[1]))
+		return (1);
+	return (0);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_xX.c                                     :+:      :+:    :+:   */
+/*   ft_format_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:14:22 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:59:16 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 15:15:44 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/09 01:25:56 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
 
-char	*ft_format_xX(unsigned int n, char conversion)
+char	*ft_format_u(unsigned int u)
 {
-	size_t	n_len;
-	char	*x;
+	char	*u_str;
+	size_t	u_len;
 
-	n_len = ft_hexlen(n);
-	x = (char *)malloc(sizeof(n_len + 1));
-	if (!x)
+	u_len = ft_ulen(u);
+	u_str = (char *)malloc(sizeof(char) * (u_len + 1));
+	if (!u_str)
 		return (NULL);
-	if (conversion == 'x')
-		ft_convert_base(n, "0123456789abcdef", x, n_len);
-	else
-		ft_convert_base(n, "0123456789ABCDEF", x, n_len);
-	return (x);
-
+	ft_convert_base(u, "0123456789", u_str, u_len);
+	return (u_str);
 }

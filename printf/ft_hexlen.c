@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ulen.c                                          :+:      :+:    :+:   */
+/*   ft_hexlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:45:34 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:59:55 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 18:41:00 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/09 01:26:49 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
 
-size_t	ft_ulen(unsigned int u)
+size_t	ft_hexlen(long long hex)
 {
-	if (!u)
+	if (!hex)
 		return (0);
-	return 1 + (ft_ulen(u / 10));
+	return 1 + (ft_hexlen(hex / 16));
 }

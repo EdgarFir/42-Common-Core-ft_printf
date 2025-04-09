@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_p.c                                      :+:      :+:    :+:   */
+/*   ft_format_xX.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:12:55 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:58:56 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 15:14:22 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/09 01:26:26 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
 
-char	*ft_format_p(void *p)
+char	*ft_format_xX(unsigned int n, char conversion)
 {
-	long long	adr;
-	size_t		adr_len;
-	char		*hex;
+	size_t	n_len;
+	char	*x;
 
-	if (!p)
-		return (ft_strdup(("(nil)")));
-	adr = (unsigned long long)p;
-	adr_len = ft_hexlen(adr);
-	hex = (char *)malloc(sizeof(char) * (adr_len + 3));
-	if (!hex)
+	n_len = ft_hexlen(n);
+	x = (char *)malloc(sizeof(n_len + 1));
+	if (!x)
 		return (NULL);
-	hex[0] = '0';
-	hex[1] = 'x';
-	ft_convert_base(adr, "0123456789abcdef", &hex[2], adr_len);
-	return (hex);
+	if (conversion == 'x')
+		ft_convert_base(n, "0123456789abcdef", x, n_len);
+	else
+		ft_convert_base(n, "0123456789ABCDEF", x, n_len);
+	return (x);
+
 }

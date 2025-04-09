@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_u.c                                      :+:      :+:    :+:   */
+/*   ft_ulen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:15:44 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:59:26 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 18:45:34 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/09 01:28:06 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
 
-char	*ft_format_u(unsigned int u)
+size_t	ft_ulen(unsigned int u)
 {
-	char	*u_str;
-	size_t	u_len;
-
-	u_len = ft_ulen(u);
-	u_str = (char *)malloc(sizeof(char) * (u_len + 1));
-	if (!u_str)
-		return (NULL);
-	ft_convert_base(u, "0123456789", u_str, u_len);
-	return (u_str);
+	if (!u)
+		return (0);
+	return 1 + (ft_ulen(u / 10));
 }
