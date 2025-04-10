@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c ft_format_s.c ft_format_c.c ft_format_p.c \
-	   ft_format_x.c ft_format_u.c ft_hexlen.c ft_is_valid_conv.c ft_ulen.c \
+	   ft_format_x.c ft_format_u.c ft_is_valid_conv.c \
 	   ft_format_i_d.c
 
 OBJS = ${SRCS:.c=.o}

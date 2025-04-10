@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:22:28 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/10 02:04:41 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:11:54 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static int	ft_convert(char conversion, va_list lst)
 	return (total);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	lst;
 	int		i;
 	int		total;
-	
+
 	va_start(lst, str);
 	i = 0;
 	total = 0;
