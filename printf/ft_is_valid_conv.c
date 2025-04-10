@@ -6,12 +6,12 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:23:57 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:27:47 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:49:20 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_is_valid_conv(const char *str)
 {

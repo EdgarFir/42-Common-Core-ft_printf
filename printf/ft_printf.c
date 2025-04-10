@@ -6,38 +6,33 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:22:28 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:27:34 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:04:41 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
-#include <limits.h>
 
-static	int	ft_convert(char conversion, va_list lst)
+static int	ft_convert(char conversion, va_list lst)
 {
-	char	*format_str;
+	int	total;
 
+	total = 0;
 	if (conversion == 'c')
-		format_str = ft_format_c(va_arg(lst, int));
+		total = ft_format_c(va_arg(lst, int));
 	else if (conversion == '%')
-		format_str = ft_format_c('%');
+		total = ft_format_c('%');
 	else if (conversion == 's')
-		format_str = ft_format_s(va_arg(lst, char *));
+		total = ft_format_s(va_arg(lst, char *));
 	else if (conversion == 'd' || conversion == 'i')
-		format_str = ft_itoa(va_arg(lst, int));
+		total = ft_format_i_d(va_arg(lst, int));
 	else if (conversion == 'p')
-		format_str = ft_format_p(va_arg(lst, void *));
-	else if (conversion == 'x' || conversion == 'X')
-		format_str = ft_format_xX(va_arg(lst, unsigned int), conversion);
+		total = ft_format_p(va_arg(lst, void *));
+	else if (conversion == 'u')
+		total = ft_format_u(va_arg(lst, unsigned int));
 	else
-		format_str = ft_format_u(va_arg(lst, unsigned int));
-	if (!format_str)
-		return (-1);
-	ft_putstr(format_str);
-	free(format_str);
-	return (ft_strlen(format_str));
+		total = ft_format_x(va_arg(lst, unsigned int), conversion);
+	return (total);
 }
 
 int ft_printf(const char *str, ...)

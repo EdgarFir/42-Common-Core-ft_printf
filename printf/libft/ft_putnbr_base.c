@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_xX.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:14:22 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:26:26 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/10 01:09:35 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/10 01:46:36 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "libftprintf.h"
+#include "libft.h"
 
-char	*ft_format_xX(unsigned int n, char conversion)
+int ft_putnbr_base(unsigned long long n, char *base_s, int base_i)
 {
-	size_t	n_len;
-	char	*x;
+	int total;
 
-	n_len = ft_hexlen(n);
-	x = (char *)malloc(sizeof(n_len + 1));
-	if (!x)
-		return (NULL);
-	if (conversion == 'x')
-		ft_convert_base(n, "0123456789abcdef", x, n_len);
-	else
-		ft_convert_base(n, "0123456789ABCDEF", x, n_len);
-	return (x);
+	total = 0;
 
+	if (n >= (unsigned long long)base_i)
+		total += ft_putnbr_base(n / base_i, base_s, base_i);
+	ft_putchar(base_s[n % base_i]);
+	return (total + 1);
 }

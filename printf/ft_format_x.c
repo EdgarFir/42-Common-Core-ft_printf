@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ulen.c                                          :+:      :+:    :+:   */
+/*   ft_format_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:45:34 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:28:06 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 15:14:22 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/10 02:00:55 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-size_t	ft_ulen(unsigned int u)
+int	ft_format_x(unsigned int n, char conversion)
 {
-	if (!u)
-		return (0);
-	return 1 + (ft_ulen(u / 10));
+	char	*base;
+
+	if (!n)
+		return (ft_putstr("0"));
+	if (conversion == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	return (ft_putnbr_base(n, base, 16));
 }

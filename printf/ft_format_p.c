@@ -6,28 +6,19 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:12:55 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:25:35 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:56:41 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-char	*ft_format_p(void *p)
+int	ft_format_p(void *p)
 {
 	long long	adr;
-	size_t		adr_len;
-	char		*hex;
 
 	if (!p)
-		return (ft_strdup(("(nil)")));
+		return (ft_putstr("(nil)"));
 	adr = (unsigned long long)p;
-	adr_len = ft_hexlen(adr);
-	hex = (char *)malloc(sizeof(char) * (adr_len + 3));
-	if (!hex)
-		return (NULL);
-	hex[0] = '0';
-	hex[1] = 'x';
-	ft_convert_base(adr, "0123456789abcdef", &hex[2], adr_len);
-	return (hex);
+	return (ft_putstr("0x") + ft_putnbr_base(adr, "0123456789abcdef", 16));
 }

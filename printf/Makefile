@@ -1,7 +1,8 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c ft_format_s.c ft_format_c.c ft_format_p.c \
-	   ft_format_xX.c ft_format_u.c ft_hexlen.c ft_is_valid_conv.c ft_ulen.c
+	   ft_format_x.c ft_format_u.c ft_hexlen.c ft_is_valid_conv.c ft_ulen.c \
+	   ft_format_i_d.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -18,7 +19,7 @@ RM = rm -f
 
 $(NAME): ${OBJS}
 	make -C libft bonus
-	ar rcs ${NAME} ${OBJS} libft/libft.a
+	ar rcs ${NAME} ${OBJS} libft/*.o
 
 all: ${NAME}
 

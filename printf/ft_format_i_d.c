@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_format_i_d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 14:25:59 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/10 00:33:47 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/10 01:22:13 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/10 01:42:44 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
-int	ft_putstr(char *str)
+int	ft_format_i_d(int n)
 {
-	int	total;
+	char *base;
+	long long n_long;
 	
-	total = 0;
-	while (str[total])
+	n_long = n;
+	base = "0123456789";
+	if (n < 0)
 	{
-		write(1, &str[total], 1);
-		total++;
+		ft_putchar('-');
+		return 1 + (ft_putnbr_base((unsigned long long)(-n_long), base, 10));
 	}
-	return (total);
+	return (ft_putnbr_base((unsigned long long)n_long, base, 10));
 }

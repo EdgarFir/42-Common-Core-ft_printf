@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:32:35 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/07 18:43:31 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:20:46 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void 	ft_putstr(char *str);
-void	ft_convert_base(unsigned long long n, char *base, char *converted, size_t size);
+int		ft_putstr(char *str);
+void	ft_convert_base(unsigned long long n, char *b, char *conv, size_t s);
+int		ft_putnbr_base(unsigned long long n, char *base_s, int base_i);
+void	ft_putchar(char c);
 
 #endif

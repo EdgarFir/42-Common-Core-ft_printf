@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:41:00 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/09 01:26:49 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/10 01:18:20 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/10 01:34:08 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "libftprintf.h"
+#include "libft.h"
 
-size_t	ft_hexlen(long long hex)
+void	ft_putchar(char c)
 {
-	if (!hex)
-		return (0);
-	return 1 + (ft_hexlen(hex / 16));
+	write(1, &c, 1);
 }
