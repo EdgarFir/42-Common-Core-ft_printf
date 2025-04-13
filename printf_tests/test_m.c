@@ -1,105 +1,71 @@
-#include "../printf/libftprintf.h"
+#include "../printf/ft_printf.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
-void compare_with_ori(char *origin, void *var, char *s, int n, unsigned int u)
+#include "limits.h"
+
+int main(void)
 {
-	char buf1[100] = {0}, buf2[100] = {0};
-	int pipefd[2];
-	int printf_r;
-	int ft_printf_r;
+    int d = -123;
+    int i = 456;
+    unsigned int u = 3000000000;
+    int hex = 48879;
+    char *s = "Hello, World!";
+    char *null_str = NULL;
+    char c = 'A';
+    void *p = &d;
 
-	int saved_stdout = dup(STDOUT_FILENO);
+    printf("----- Testing formats.. -----\n\n");
 
-	// ---- FT_PRINTF ----
-	pipe(pipefd);
-	dup2(pipefd[1], STDOUT_FILENO);
+    // %d
+    printf("1. %%d\n");
+    printf("printf   : |%d|\n", d);
+    ft_printf("ft_printf: |%d|\n\n", d);
 
-	if (var)
-		ft_printf_r = ft_printf(origin, var);
-	else if (s)
-		ft_printf_r = ft_printf(origin, s);
-	else if (n)
-		ft_printf_r = ft_printf(origin, n);
-	else if (u)
-		ft_printf_r = ft_printf(origin, u);
-	else
-		ft_printf_r = ft_printf(origin);
+    // %i
+    printf("2. %%i\n");
+    printf("printf   : |%i|\n", i);
+    ft_printf("ft_printf: |%i|\n\n", i);
 
-	fflush(stdout);
-	close(pipefd[1]);
+    // %u
+    printf("3. %%u\n");
+    printf("printf   : |%u|\n", u);
+    ft_printf("ft_printf: |%u|\n\n", u);
 
-	int size1 = read(pipefd[0], buf1, sizeof(buf1) - 1);
-	buf1[size1] = '\0';
-	close(pipefd[0]);
+    // %x
+    printf("4. %%x\n");
+    printf("printf   : |%x|\n", hex);
+    ft_printf("ft_printf: |%x|\n\n", hex);
 
-	dup2(saved_stdout, STDOUT_FILENO);
+    // %X
+    printf("5. %%X\n");
+    printf("printf   : |%X|\n", hex);
+    ft_printf("ft_printf: |%X|\n\n", hex);
 
-	// ---- PRINTF ----
-	pipe(pipefd);
-	dup2(pipefd[1], STDOUT_FILENO);
+    // %s
+    printf("6. %%s (string normal)\n");
+    printf("printf   : |%s|\n", s);
+    ft_printf("ft_printf: |%s|\n\n", s);
 
-	if (var)
-		printf_r = printf(origin, var);
-	else if (s)
-		printf_r = printf(origin, s);
-	else if (n)
-		printf_r = printf(origin, n);
-	else if (u)
-		printf_r = printf(origin, u);
-	else
-	{
-		puts(origin);
-		printf_r = strlen(origin);
-	}
+    printf("7. %%s (string NULL)\n");
+    printf("printf   : |%s|\n", null_str);
+    ft_printf("ft_printf: |%s|\n\n", null_str);
 
-	fflush(stdout);
-	close(pipefd[1]);
+    // %c
+    printf("8. %%c\n");
+    printf("printf   : |%c|\n", c);
+    ft_printf("ft_printf: |%c|\n\n", c);
 
-	int size2 = read(pipefd[0], buf2, sizeof(buf2) - 1);
-	buf2[size2] = '\0';
-	close(pipefd[0]);
+    // %p
+    printf("9. %%p\n");
+    printf("printf   : |%p|\n", p);
+    ft_printf("ft_printf: |%p|\n\n", p);
 
-	dup2(saved_stdout, STDOUT_FILENO);
-	close(saved_stdout);
+    // %%
+    printf("10. %%%%\n");
+    printf("printf   : |%%|\n");
+    ft_printf("ft_printf: |%%|\n\n");
 
-	// Comparação
-	int are_equal = strcmp(buf1, buf2) == 0;
-
-	if (are_equal)
-	{
-		printf("\033[0;32mEQUAL!\033[0m\nft_printf: %s\nprintf: %s\n", buf1, buf2);
-	}
-	else
-	{
-		printf("\033[0;31mNOT EQUAL:\033[0m\nft_printf: %s\nprintf: %s\n", buf1, buf2);
-	}
-
-	if (printf_r == ft_printf_r && are_equal)
-	{
-		printf("\033[0;32mCORRECT!\033[0m\n");
-	}
-	else
-	{
-		printf("\033[0;31mINCORRECT!\033[0m\n");
-		printf("FT_PRINTF_SIZE: %i\nPRINTF_SIZE: %i\n", ft_printf_r, printf_r);
-	}
-}
-
-int main()
-{
-	// Texto em vermelho
-
-    //ft_printf("\033[0;31mEste texto está a vermelho!\033[0m\n");
-
-    // Texto em verde
-    //ft_printf("\033[0;32mEste está a verde!\033[0m\n");
-	//ft_printf("\033[0;31mHELLO!\033[0m");
-
-	int n = 41;
-	compare_with_ori("NUMBERS: %i\n", 0, 0, n, 0);
-
-	char s[] = "42";
-	compare_with_ori("STRINGS: %s\n", 0, s, 0, 0);
+    return 0;
 }

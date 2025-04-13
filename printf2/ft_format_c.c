@@ -6,40 +6,37 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:29:15 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/11 18:00:42 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/13 00:55:34 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
-
 #include <stdio.h>
+
 int	ft_format_c(int c, t_flags *flags)
-{	
-	int len;
-	
-	//printf("FORMAT: %c\n", (char)c);
-	len = 1;
+{
+	if (flags->precision && !flags->width)
+		flags->width = flags->precision;
 	if (flags->width)
 	{
-		//printf("W: %i\n", flags->width);
-		len = flags->width - 1;
 		if (flags->neg_sign)
 		{
-			//printf("C: %c", c);
 			ft_putchar(c);
-			ft_print_spaces(len);
+			ft_print_flag(' ', flags->width - 1);
+		}
+		else if (c == '%' && flags->zero)
+		{
+			ft_print_flag('0', flags->width - 1);
+			ft_putchar(c);
 		}
 		else
 		{
-			ft_print_spaces(len);
+			ft_print_flag(' ', flags->width - 1);
 			ft_putchar(c);
 		}
 		return (flags->width - 1);
 	}
-	else
-	{
-		ft_putchar(c);
-	}
-	return (len);
+	ft_putchar(c);
+	return (1);
 }
