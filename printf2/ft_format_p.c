@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:12:55 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/14 21:59:00 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 03:28:28 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	print_p_width(t_flags *flags, unsigned long long adr)
 	if (flags->width > 0)
 	{
 		if (!flags->neg_sign)
-			ft_print_flag(' ', flags->width);
+			ft_print_flag(' ', flags->width, 0, 0, 0);
 		if (!adr)
 			total = ft_putstr(("(nil)"));
 		else
 			total = ft_putstr("0x") + ft_putnbr_base(adr, "0123456789abcdef", 16);
 		if (flags->neg_sign)
-			ft_print_flag(' ', flags->width);
+			ft_print_flag(' ', flags->width, 0, 0, 0);
 		return (total + flags->width);
 	}
 	if (!adr)

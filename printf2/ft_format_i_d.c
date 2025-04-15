@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 01:22:13 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/15 03:21:04 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 03:30:31 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_print_i_d_front(t_flags *flags, int n)
 			else
 			{
 				if (flags->space)
-					ft_print_flag('0', flags->width, 1, 0, ' ');
+					ft_print_flag('0', flags->width - 1, 1, 0, ' ');
 				else
 					ft_print_flag('0', flags->width, 0, 0, 0);
 			}
@@ -58,9 +58,13 @@ static int	ft_print_i_d_front(t_flags *flags, int n)
 	}
 	else if (flags->space && !flags->pos_sign)
 	{
-		ft_print_flag(' ', flags->width, 0, 0, 0);
 		if (n < 0)
+		{
+			ft_print_flag(' ', flags->width + 1, 0, 0, 0);
 			total += ft_putstr("-");
+		}
+		else
+			ft_print_flag(' ', flags->width, 0, 0, 0);
 	}
 	else
 	{

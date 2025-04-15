@@ -59,9 +59,10 @@ void test_c()
     ft_printf("ft_printf: |%-.5c|\n\n", c);
 }
 
+#include <limits.h>
 void test_d_i()
 {
-	int value = -42;
+	int value = INT_MIN;
 	printf("------ Testes de %%d e %%i com valor = %d ------\n", value);
 
 	ft_printf("\n1. \"%%d\"\n");
