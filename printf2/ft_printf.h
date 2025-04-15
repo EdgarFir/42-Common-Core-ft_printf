@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 21:13:55 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/11 21:21:55 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 01:05:08 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_format_p(void *p, t_flags *flags);
 int		ft_format_x(unsigned int n, char conversion, t_flags *flags);
 int		ft_format_u(unsigned int u, t_flags *flags);
 int		ft_format_i_d(int n, t_flags *flags);
-void	ft_print_flag(int c, int len);
+void	ft_print_flag(int c, int len, int sign_before, int sign_after, char signal);
 
 
 

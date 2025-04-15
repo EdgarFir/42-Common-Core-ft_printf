@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:29:15 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/13 00:55:34 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:16:58 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,19 @@
 
 int	ft_format_c(int c, t_flags *flags)
 {
-	if (flags->precision && !flags->width)
-		flags->width = flags->precision;
+	int total;
+
+	total = 1;
 	if (flags->width)
 	{
+		total += flags->width - 1;
+		if (!flags->neg_sign)
+			ft_print_flag(' ', flags->width - 1);
+		ft_putchar(c);
 		if (flags->neg_sign)
-		{
-			ft_putchar(c);
 			ft_print_flag(' ', flags->width - 1);
-		}
-		else if (c == '%' && flags->zero)
-		{
-			ft_print_flag('0', flags->width - 1);
-			ft_putchar(c);
-		}
-		else
-		{
-			ft_print_flag(' ', flags->width - 1);
-			ft_putchar(c);
-		}
-		return (flags->width - 1);
 	}
-	ft_putchar(c);
-	return (1);
+	else
+		ft_putchar(c);
+	return (total);
 }
