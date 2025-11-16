@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 17:19:01 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/03 17:20:09 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/15 15:47:23 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/15 15:52:05 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "ft_printf.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	return (c >= '0' && c <= '9');
+	char	*str;
+
+	str = (char *)s;
+	while (*str)
+	{
+		if (*str == (char)c)
+			return (str);
+		str++;
+	}
+	if (*str == c)
+		return (str);
+	return (NULL);
 }

@@ -6,11 +6,10 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:12:55 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/10 21:12:21 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:56:18 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_format_p(void *p)

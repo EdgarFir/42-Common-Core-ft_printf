@@ -6,11 +6,11 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 01:22:13 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/10 21:13:34 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:56:17 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 int	ft_format_i_d(int n)
 {
@@ -21,7 +21,7 @@ int	ft_format_i_d(int n)
 	base = "0123456789";
 	if (n < 0)
 	{
-		ft_putchar('-');
+		write(1, "-", 1);
 		return (1 + (ft_putnbr_base((unsigned long long)(-n_long), base, 10)));
 	}
 	return ((ft_putnbr_base((unsigned long long)n_long, base, 10)));

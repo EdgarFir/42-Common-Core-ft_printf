@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 22:25:22 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/05 22:25:32 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/07 14:25:59 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/15 15:56:35 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	ft_putstr(char *str)
 {
-	t_list	*curr;
-	t_list	*next;
+	int	total;
 
-	if (lst && *lst && del)
+	total = 0;
+	while (str[total])
 	{
-		curr = *lst;
-		while (curr)
-		{
-			next = curr->next;
-			ft_lstdelone(curr, del);
-			curr = next;
-		}
-		*lst = NULL;
+		write(1, &str[total], 1);
+		total++;
 	}
+	return (total);
 }

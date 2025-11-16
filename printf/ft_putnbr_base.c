@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 17:19:01 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/03 17:20:09 by edfreder         ###   ########.fr       */
+/*   Created: 2025/04/10 01:09:35 by edfreder          #+#    #+#             */
+/*   Updated: 2025/04/15 15:57:46 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "ft_printf.h"
+
+int	ft_putnbr_base(unsigned long long n, char *base_s, int base_i)
 {
-	return (c >= '0' && c <= '9');
+	int	total;
+
+	total = 0;
+	if (n >= (unsigned long long)base_i)
+		total += ft_putnbr_base(n / base_i, base_s, base_i);
+	write(1, &base_s[n % base_i], 1);
+	return (total + 1);
 }

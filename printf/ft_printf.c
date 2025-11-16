@@ -6,12 +6,11 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:22:28 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/10 21:11:54 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:55:12 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 static int	ft_convert(char conversion, va_list lst)
 {
@@ -61,35 +60,3 @@ int	ft_printf(const char *str, ...)
 	va_end(lst);
 	return (total);
 }
-/*
-int main()
-{
-	// Test % and c
-	ft_printf("TEST CHAR AND %%: %% %c\n", 'A');
-	ft_printf("TEST WITH PRINTF:\n");
-	printf("TEST CHAR AND %%: %% %c\n\n", 'A');
-
-	// s
-	char *ss = NULL;
-	ft_printf("TEST S: %s %s %s\n", "42", "", NULL);
-	ft_printf("TEST WITH PRINTF:\n");
-	printf("TEST S: %s %s %s\n\n", "42", "", ss);
-
-	// p
-	int i = 42;
-	ft_printf("TEST P: %p %p\n", &i, NULL);
-	ft_printf("TEST WITH PRINTF:\n");
-	printf("TEST P: %p %p\n\n", &i, NULL);
-
-
-	// i d u
-	ft_printf("TEST I / D: %d %i %u\n", 42, 42, UINT_MAX);
-	ft_printf("TEST WITH PRINTF:\n");
-	printf("TEST I / D: %d %i %u\n\n", 42, 42, UINT_MAX);
-
-	// x X
-	ft_printf("TEST I / D: %x %X %x\n", 42, 42, -42);
-	ft_printf("TEST WITH PRINTF:\n");
-	printf("TEST I / D: %x %X %x\n\n", 42, 42, -42);
-}
-*/
